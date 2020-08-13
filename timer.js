@@ -24,7 +24,7 @@ class Timer {
         //Activates 'tick' as soon as start is clicked
         this.tick();
         // This will make sure that tick runs every second. intervalr also returns a reference number
-        this.interval = setInterval(this.tick, 1000);
+        this.interval = setInterval(this.tick, 50);
     }
 
     pause = () => {
@@ -40,7 +40,7 @@ class Timer {
             }
         } else {
             //Allows number to be subtracted by 1 in the input section
-            this.timeRemaining = this.timeRemaining - 1;
+            this.timeRemaining = this.timeRemaining - .05;
             if (this.onTick) {
                 this.onTick();
             }
@@ -53,6 +53,7 @@ class Timer {
     }
     //Setter 
     set timeRemaining(time) {
-        this.durationInput.value = time;
+        //toFixed makes sure that we only get 2 microseconds
+        this.durationInput.value = time.toFixed(2);
     }
 }
