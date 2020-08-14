@@ -19,12 +19,13 @@ class Timer {
 
     start = () => {
         if (this.onStart) {
-            this.onStart();
+            //It will show how long the timer will run in total
+            this.onStart(this.timeRemaining);
         }
         //Activates 'tick' as soon as start is clicked
         this.tick();
         // This will make sure that tick runs every second. intervalr also returns a reference number
-        this.interval = setInterval(this.tick, 50);
+        this.interval = setInterval(this.tick, 20);
     }
 
     pause = () => {
@@ -40,9 +41,9 @@ class Timer {
             }
         } else {
             //Allows number to be subtracted by 1 in the input section
-            this.timeRemaining = this.timeRemaining - .05;
+            this.timeRemaining = this.timeRemaining - .02;
             if (this.onTick) {
-                this.onTick();
+                this.onTick(this.timeRemaining);
             }
         }
     };
